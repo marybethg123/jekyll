@@ -1,0 +1,2 @@
+I"�<p>I was trying out the new Raspberry Pi Particle Beta and put together a quick project with IFTTT and Google Assistant to turn on computers with voice commands. It was based on a similar Hackster.io project that used the Spark Core / Photon and a companion Android app to send WOL packets. The original article is <a href="https://www.hackster.io/pombeirp/particle-wake-on-lan-2a1bb5">here</a> and my replication of the project is noted in “Replications” at the bottom of the page.</p>
+:ET

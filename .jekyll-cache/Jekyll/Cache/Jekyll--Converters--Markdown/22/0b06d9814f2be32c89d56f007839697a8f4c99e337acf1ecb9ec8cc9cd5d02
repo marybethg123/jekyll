@@ -1,0 +1,30 @@
+I"�<p>I’ve been hearing a lot of goods things about Jekyll for a while now. The idea of stepping away from the more complicated CMS like Wordpress that I’ve used in the past seems appealing for a simple site. The project I had in mind (this site) was a blog to catalog or document various projects in a single location which sounded perfect for what GitHub Pages and Jekyll had to offer. One thing that made this setup slightly more complicated was the desire to have a site that I could modify and serve locally to then push to GitHub Pages. The easier route since GitHub Pages is integrated with Jekyll would be to setup a github page, choose a theme, and add some posts.</p>
+<h3 id="installing-ruby-rubygems-and-jekyll-ubuntu"><a href="#header-3"></a>Installing Ruby, Rubygems, and Jekyll (Ubuntu)</h3>
+<p>At the time of writing this, Jekyll needs version 2.0 and the apt “ruby-full” package provides Ruby 2.3. I should probably be using a Ruby version manager like rbenv or RVM but oh well. The –user-install flag installs the gem inside the home directory. Running gem environment will tell you where the user installation directory is to add it to your path.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>ruby-full
+<span class="nv">$ </span><span class="nb">sudo </span>gem update <span class="nt">--system</span>
+<span class="nv">$ </span>gem <span class="nb">install </span>jekyll <span class="nt">--user-install</span>
+<span class="nv">$ </span>gem <span class="nb">install </span>jekyll bundler <span class="nt">--user-install</span>
+<span class="nv">$ </span>gem environment
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/username//.gem/ruby/2.3.0/bin
+</code></pre></div></div>
+<h3 id="creating-a-site-and-selecting-a-theme"><a href="#header-3"></a>Creating a Site and Selecting a Theme</h3>
+<p>The easy part is the following three commands which create a new Jekyll site and serve it on the preview server.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll new myblog
+<span class="nv">$ </span><span class="nb">cd </span>myblog
+<span class="nv">$ </span>jekyll serve myblog 
+</code></pre></div></div>
+<p>And the site is up at localhost:4000. Wasn’t that easy compared to setting up a LAMP server! Since I want the midnight theme I replaced “minima” in the gemfile with “jekyll-theme-midnight” and theme: jekyll-theme-midnight to the _config.yml file. Before building with the new theme a couple of changes need to be made to the default site because not everything supported in the default theme minima is supported by midnight. I primarily made the following changes:</p>
+<ol>
+  <li>Deleted with the about.md file.</li>
+  <li>Copied the post.html and home.html layouts from the minima theme.</li>
+  <li>Added a defaults.html layout from the midnight theme and made some small changes. The defaults.html in _layouts (as well as any other files with the same name) will overwrite the defaults.html in the gem file.</li>
+  <li>Added some custom share icons based on the article <a href="http://tomhohenstein.com/Jekyll-Custom-Share-Buttons/">here</a> and a tiny bit of custom style to /assets/css/style.scss.</li>
+</ol>
+
+<p>The <a href="https://jekyllrb.com/docs/home/">Jekyll documentation</a> on content creation as well as the themes own index.md provides almost all the information needed for blogging basics.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">install</span>
+<span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+<p>Now all that’s left is to push to a <a href="https://pages.github.com/">GitHub Pages</a> site.</p>
+:ET
